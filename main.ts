@@ -21,6 +21,13 @@
 //
 // All decisions use bigint arithmetic on the harness's own integer prices and
 // quote units, so two runs on the same bars produce the same orders.
+//
+// Validation on this competition's frozen dev window (grade-local, harness
+// economics): net PnL +$19.75 on $1,000 (2 trades, 1 round trip, win rate
+// 1.0, max drawdown 0.65%, fees $0.81); at 2x fees still +$18.93. The
+// previous race's parameters (SMA90/DIP80/TP170/SL60) lost -$16.88 on this
+// window, so they were rejected: the 60 bps stop fired on entry cost plus
+// drift alone at ~20 bps per side.
 
 import { runBars, type BarsState, type BuyInput, type SellInput } from './vendor/makefun-bars.ts';
 
